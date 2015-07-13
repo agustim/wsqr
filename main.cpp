@@ -59,11 +59,13 @@ int main(int argc, char **argv) {
             // do something useful with results
             //cout << symbol->get_data() << endl;
             printf("%s\n", symbol->get_data().c_str());
+            return 0;
 
             //cout << "Location: (" << symbol->get_location_x(0) << "," << symbol->get_location_y(0) << ")" << endl;
             //cout << "Size: " << symbol->get_location_size() << endl;
 
             // Draw location of the symbols found
+  /*
             if (symbol->get_location_size() == 4) {
                 //rectangle(frame, Rect(symbol->get_location_x(i), symbol->get_location_y(i), 10, 10), Scalar(0, 255, 0));
                 line(frame, Point(symbol->get_location_x(0), symbol->get_location_y(0)), Point(symbol->get_location_x(1), symbol->get_location_y(1)), Scalar(0, 255, 0), 2, 8, 0);
@@ -71,7 +73,7 @@ int main(int argc, char **argv) {
                 line(frame, Point(symbol->get_location_x(2), symbol->get_location_y(2)), Point(symbol->get_location_x(3), symbol->get_location_y(3)), Scalar(0, 255, 0), 2, 8, 0);
                 line(frame, Point(symbol->get_location_x(3), symbol->get_location_y(3)), Point(symbol->get_location_x(0), symbol->get_location_y(0)), Scalar(0, 255, 0), 2, 8, 0);
             }
-
+*/
             // Get points
             /*for (Symbol::PointIterator point = symbol.point_begin(); point != symbol.point_end(); ++point) {
                 cout << point << endl;
