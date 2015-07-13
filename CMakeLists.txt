@@ -6,5 +6,5 @@ find_package (OpenCV)
 find_package (ZBar0)
 
 
-add_executable (zbar_opencv main.cpp)
-target_link_libraries (zbar_opencv ${OpenCV_LIBRARIES} ${ZBAR_LIBRARIES})
+add_executable (wsqr main.cpp)
+target_link_libraries (wsqr ${OpenCV_LIBRARIES} ${ZBAR_LIBRARIES})

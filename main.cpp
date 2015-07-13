@@ -24,11 +24,11 @@ int main(int argc, char **argv) {
     //cap.set(CV_CAP_PROP_FRAME_WIDTH, 640);
     //cap.set(CV_CAP_PROP_FRAME_HEIGHT, 480);
 
-    namedWindow("captured", CV_WINDOW_AUTOSIZE);
-    
+    //namedWindow("captured", CV_WINDOW_AUTOSIZE);
+
     // Create a zbar reader
     ImageScanner scanner;
-    
+
     // Configure the reader
     scanner.set_config(ZBAR_NONE, ZBAR_CFG_ENABLE, 1);
 
@@ -55,19 +55,14 @@ int main(int argc, char **argv) {
         // Extract results
         int counter = 0;
         for (Image::SymbolIterator symbol = image.symbol_begin(); symbol != image.symbol_end(); ++symbol) {
-            time_t now;
-            tm *current;
-            now = time(0);
-            current = localtime(&now);
 
             // do something useful with results
-            cout    << "[" << current->tm_hour << ":" << current->tm_min << ":" << setw(2) << setfill('0') << current->tm_sec << "] " << counter << " "
-                    << "decoded " << symbol->get_type_name()
-                    << " symbol \"" << symbol->get_data() << '"' << endl;
+            //cout << symbol->get_data() << endl;
+            printf("%s\n", symbol->get_data().c_str());
 
             //cout << "Location: (" << symbol->get_location_x(0) << "," << symbol->get_location_y(0) << ")" << endl;
             //cout << "Size: " << symbol->get_location_size() << endl;
-            
+
             // Draw location of the symbols found
             if (symbol->get_location_size() == 4) {
                 //rectangle(frame, Rect(symbol->get_location_x(i), symbol->get_location_y(i), 10, 10), Scalar(0, 255, 0));
@@ -76,7 +71,7 @@ int main(int argc, char **argv) {
                 line(frame, Point(symbol->get_location_x(2), symbol->get_location_y(2)), Point(symbol->get_location_x(3), symbol->get_location_y(3)), Scalar(0, 255, 0), 2, 8, 0);
                 line(frame, Point(symbol->get_location_x(3), symbol->get_location_y(3)), Point(symbol->get_location_x(0), symbol->get_location_y(0)), Scalar(0, 255, 0), 2, 8, 0);
             }
-            
+
             // Get points
             /*for (Symbol::PointIterator point = symbol.point_begin(); point != symbol.point_end(); ++point) {
                 cout << point << endl;
@@ -85,11 +80,11 @@ int main(int argc, char **argv) {
         }
 
         // Show captured frame, now with overlays!
-        imshow("captured", frame);
-                                                                                                                                                          
+        //imshow("captured", frame);
+
         // clean up
         image.set_data(NULL, 0);
-        
+
         waitKey(30);
     }
 
